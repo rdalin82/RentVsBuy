@@ -11,14 +11,14 @@ div{
 }
 
 .top-head {
-		text-align: center;
-		padding: 5px 0 5px 0;
-		background-color: orange;
-		color: white;
-		font-size: 2em;
-		width: 100%;
-		min-height: 40px;
-		font-weight: bold;
+	text-align: center;
+	padding: 5px 0 5px 0;
+	background-color: orange;
+	color: white;
+	font-size: 2em;
+	width: 100%;
+	min-height: 40px;
+	font-weight: bold;
 }
 
 .sub-head{
