@@ -1,0 +1,25 @@
+{
+  "name": "rent-v-buy",
+  "version": "0.1.0",
+  "description": "Front end mortgage v rent calculator with react",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rdalin82/RentVsBuy.git"
+  },
+  "keywords": [
+    "react",
+    "css",
+    "html",
+    "javascript"
+  ],
+  "author": "Rob Dalin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rdalin82/RentVsBuy/issues"
+  },
+  "homepage": "https://github.com/rdalin82/RentVsBuy#readme"
+}
