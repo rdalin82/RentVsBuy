@@ -1,15 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-
-
-class Layout extends React.Component {
-  render(){
-    return (
-      <p>Do it!</p>
-    );
-  }
-}
+import Container from "./componets/Container"
 
 const app = document.getElementById('app');
 
-ReactDOM.render(<Layout/>, app);
+ReactDOM.render(<Container />, app);
