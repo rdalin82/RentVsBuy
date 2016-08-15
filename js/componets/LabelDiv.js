@@ -3,9 +3,9 @@ var innerStyle = {
   width: "40%",
   display: "inline-block",
   float: "left", 
-  "min-height": "40px",
+  minHeight: "40px",
   padding: "0", 
-  "font-size": "90%"
+  fontSize: "90%"
 }
 
 export default class LabelDiv extends React.Component { 

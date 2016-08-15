@@ -7,9 +7,9 @@ export default class InnerDiv extends React.Component {
     return (
         <div>
           <LabelDiv label={this.props.labelleft} />
-          <AmountDiv dollarsign={this.props.dollarsignleft} />
+          <AmountDiv changeHandler={this.props.leftChangeHandler} dollarsign={this.props.dollarsignleft} value={this.props.valueleft} />
           <LabelDiv label={this.props.labelright} />
-          <AmountDiv dollarsign={this.props.dollarsignright}/>
+          <AmountDiv changeHandler={this.props.rightChangeHandler} dollarsign={this.props.dollarsignright} value={this.props.valueright} />
         </div>
       );
   }

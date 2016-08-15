@@ -11,10 +11,12 @@ var topHeaderStyle = {
   fontWeigth: "bold"
 };
 
-export default class TopHeader extends React.Component {
+export default class TopHeader extends React.Component {  
   render(){
     return (
-     <div style={topHeaderStyle}>Mortgage Details</div>
+     <div style={topHeaderStyle}>
+      {this.props.title} 
+     </div>
     );
   }
 }

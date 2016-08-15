@@ -5,9 +5,9 @@ var paymentStyle = {
   width: "10%", 
   display: 'inline-block',
   float: "left", 
-  "min-height": "40px",
+  minHeight: "40px",
   padding: "0", 
-  "font-size": "90%"
+  fontSize: "90%"
 }
 export default class BlankLeftDiv extends React.Component { 
   render(){
@@ -16,7 +16,7 @@ export default class BlankLeftDiv extends React.Component {
           <LabelDiv label={this.props.labelleft} />
           <div style={paymentStyle} /> 
           <LabelDiv label={this.props.labelright} />
-          <AmountDiv dollarsign={this.props.dollarsignright}/>
+          <AmountDiv dollarsign={this.props.dollarsignright} value={this.props.valueright}/>
         </div>
       );
   }
