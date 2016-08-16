@@ -69,9 +69,6 @@ export default class Container extends React.Component {
   final(){
     const total = this.calculateTotalPayment();
     const fin = this.calculateFinalHomePayment();
-    console.log("total is " + total);
-    console.log("fin is " + fin);
-    console.log(total+fin)
     return parseFloat(total+fin).toFixed(2);
   }
   render(){
