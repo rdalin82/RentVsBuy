@@ -16,7 +16,10 @@ export default class BlankLeftDiv extends React.Component {
           <LabelDiv label={this.props.labelleft} />
           <div style={paymentStyle} /> 
           <LabelDiv label={this.props.labelright} />
-          <AmountDiv dollarsign={this.props.dollarsignright} value={this.props.valueright}/>
+          <AmountDiv 
+            changeHandler={this.props.rightChangeHandler} 
+            dollarsign={this.props.dollarsignright} 
+            value={this.props.valueright}/>
         </div>
       );
   }

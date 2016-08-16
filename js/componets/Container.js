@@ -31,6 +31,13 @@ export default class Container extends React.Component {
   downpaymentHandler(downpayment){
     this.setState({downpayment});
   }
+  calculateTotalPayment(){
+    const pp = parseFloat(this.state.purchasePrice);
+    const dp = parseFloat(this.state.downpayment);
+    const tax = parseFloat(this.state.taxes);
+    const interest = parseFloat(this.state.interestRate);
+    return parseFloat(((pp-dp)/30/12)+(interest/12/100*pp)+(tax)/12).toFixed(2)
+  }
   render(){
     return (
      <div style={containerStyle}>
@@ -63,8 +70,8 @@ export default class Container extends React.Component {
       <BlankLeftDiv 
         labelright="Total Payment" 
         dollarsignright="$" 
-        valueright={((this.state.purchasePrice-this.state.downpayment)/30/12)+(this.state.interestRate/12/100*this.state.purchasePrice)+(this.state.taxes)/12} />
-
+        valueright={this.calculateTotalPayment()} />
+}
       <TopHeader title="Rent vs Buy" />
 
       <HalfDiv label="Your Monthly Rent Expenses" /><HalfDiv label="Estimated Mortgage Expenses" />
