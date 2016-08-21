@@ -52,7 +52,7 @@ export default class Container extends React.Component {
     const dp = parseFloat(this.state.downpayment);
     const tax = parseFloat(this.state.taxes);
     const interest = parseFloat(this.state.interestRate);
-    return ((pp-dp)/30/12)+(interest/12/100*pp)+(tax)/12
+    return ((pp-dp)/30/12)+(interest/12/100*pp)
   }
   calculateFinalHomePayment(){
     const assess = parseFloat(this.state.assessments);
@@ -104,7 +104,7 @@ export default class Container extends React.Component {
         labelright="Total Payment" 
         dollarsignright="$" 
         valueright={parseFloat(this.calculateTotalPayment()).toFixed(2)} />
-}
+
       <TopHeader title="Rent vs Buy" />
 
       <HalfDiv label="Your Monthly Rent Expenses" /><HalfDiv label="Estimated Mortgage Expenses" />
@@ -135,7 +135,7 @@ export default class Container extends React.Component {
 
       <BlankLeftDiv 
         labelright="Pirvate Mortgage Insurance"  
-        valueright={parseFloat(this.state.purchasePrice*0.01/12).toFixed(2)}
+        valueright={parseFloat(this.state.purchasePrice*0.005/12).toFixed(2)}
         dollarsignright="$" />
 
       <BlankLeftDiv 
