@@ -99,7 +99,7 @@ export default class Container extends React.Component {
         dollarsignright="$"/>
 
       <BlankLeftDiv 
-        labelright="Total Payment" 
+        labelright="Total Monthly Payment(Interest and Principal)" 
         dollarsignright="$" 
         valueright={parseFloat(this.calculateTotalPayment()).toFixed(2)} />
 
