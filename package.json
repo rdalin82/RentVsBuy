@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --content-base src --inline --hot",
-    "test": "echo \"notest && exit1\" "
+    "test": "echo \"notest && exit1\" ", 
+    "postinstall" : "webpack -p",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
