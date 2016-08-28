@@ -2,10 +2,13 @@ import React from "react";
 import TopHeader from "./TopHeader";
 import InnerDiv from "./InnerDiv";
 import BlankLeftDiv from "./BlankLeftDiv";
+import BlankRightDiv from "./BlankRightDiv";
 import HalfDiv from "./HalfDiv";
 import InputBox from "./InputBox";
 import MortgageStore from "../stores/MortgageStore";
 import * as MortgageActions from "../actions/MortgageActions";
+import RentStore from "../stores/RentStore";
+import * as RentActions from "../actions/RentActions";
 
 var containerStyle = {
   margin: "0 10px 10px 0",
@@ -14,35 +17,36 @@ var containerStyle = {
 export default class Container extends React.Component {
   constructor(){
     super();
+    this.getRent= this.getRent.bind(this);
     this.getMortgage = this.getMortgage.bind(this);
     this.state = {
       mortgage: MortgageStore.mortgageDetails(),
-      rental: {
-        rentPayment: "1500.00",
-        rentInsurance: "15.83"
-      }
+      rental: RentStore.rentDetails(),
     };
   }
   componentWillMount(){
     MortgageStore.on("change", this.getMortgage);
+    RentStore.on("change", this.getRent);
   }
   componentWillUnMount(){
-    MortgageStore.removeListener("change", this.mortgageDetails);
+    MortgageStore.removeListener("change", this.getMortgage);
+    RentStore.removeListener("change", this.getRent)
   }
   getMortgage(){
     this.setState({
       mortgage: MortgageStore.mortgageDetails(),
     })
   }
+  getRent(){
+    this.setState({
+      rent: RentStore.rentDetails(),
+    })
+  }
   reloadMortgage(){
     MortgageActions.reloadMortgage();
   }
-
-  rentPaymentHandler(rentPayment){
-    this.setState({rentPayment})
-  }
-  rentInsuranceHandler(rentInsurance){
-    this.setState({rentInsurance});
+  reloadRent(){
+    RentActions.reloadRent();
   }
   calculateTotalPayment(){
     const pp = parseFloat(this.state.mortgage.purchasePrice);
@@ -68,7 +72,6 @@ export default class Container extends React.Component {
     const fin = this.calculateFinalHomePayment();
     return parseFloat(total+fin).toFixed(2);
   }
-  ////////
   render(){
     return (
      <div style={containerStyle}>
@@ -82,13 +85,11 @@ export default class Container extends React.Component {
         rightChangeHandler={MortgageActions.setInterestRate.bind(this)}
         valueright={this.state.mortgage.interestRate} />
 
-      <InnerDiv 
+      <BlankRightDiv 
         leftChangeHandler={MortgageActions.setDownpayment.bind(this)}
         valueleft={this.state.mortgage.downpayment}
         labelleft="Down Payment" 
-        labelright="Principal + Interest" 
-        dollarsignleft="$" 
-        dollarsignright="$"/>
+        dollarsignleft="$"/>
 
       <InnerDiv 
         rightChangeHandler={MortgageActions.setTaxes.bind(this)}
@@ -100,6 +101,7 @@ export default class Container extends React.Component {
 
       <BlankLeftDiv 
         labelright="Total Monthly Payment(Interest and Principal)" 
+        rightChangeHandler={MortgageActions.doNothing.bind(this)}
         dollarsignright="$" 
         valueright={parseFloat(this.calculateTotalPayment()).toFixed(2)} />
 
@@ -111,13 +113,15 @@ export default class Container extends React.Component {
         labelleft="Monthly Rent Payment" 
         dollarsignleft="$" 
         valueleft={this.state.rental.rentPayment}
-        leftChangeHandler={this.rentPaymentHandler.bind(this)}
+        leftChangeHandler={RentActions.setRentPayment.bind(this)}
         labelright="Principal and Interest Payment" 
+        rightChangeHandler={MortgageActions.doNothing.bind(this)}
         valueright={parseFloat(this.calculateTotalPayment()).toFixed(2)}
         dollarsignright="$" />
       
       <BlankLeftDiv 
         labelright="Estimated Monthly Taxes" 
+        rightChangeHandler={MortgageActions.doNothing.bind(this)}
         valueright={parseFloat(this.state.mortgage.taxes/12).toFixed(2)}
         dollarsignright="$" />
 
@@ -125,13 +129,14 @@ export default class Container extends React.Component {
         labelleft="Monthly Renter's Insurance" 
         dollarsignleft="$" 
         valueleft={this.state.rental.rentInsurance}
-        leftChangeHandler={this.rentInsuranceHandler.bind(this)}
+        leftChangeHandler={RentActions.setRentInsurance.bind(this)}
         labelright="Estimated Homeowner's Insurance" 
         valueright={this.state.mortgage.homeownerInsurance}
         rightChangeHandler={MortgageActions.setHomeownersInsurance.bind(this)}
         dollarsignright="$" />
 
       <BlankLeftDiv 
+        rightChangeHandler={MortgageActions.doNothing.bind(this)}
         labelright="Pirvate Mortgage Insurance"  
         valueright={parseFloat(this.state.mortgage.purchasePrice*0.005/12).toFixed(2)}
         dollarsignright="$" />
@@ -146,6 +151,7 @@ export default class Container extends React.Component {
         labelleft="Total Monthly Rent Payment" 
         dollarsignleft="$" 
         valueleft={this.calculateRentPayment()}
+        rightChangeHandler={MortgageActions.doNothing.bind(this)}
         labelright="Total Monthly Purchase Payment"
         valueright={this.finalCalc()}
         dollarsignright="$" />

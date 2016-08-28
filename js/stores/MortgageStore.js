@@ -72,4 +72,4 @@ class MortgageStore extends EventEmitter {
 const mortgageStore = new MortgageStore;
 
 dispatcher.register(mortgageStore.handleActions.bind(mortgageStore));
-export default mortgageStore
+export default mortgageStore;

@@ -37,3 +37,8 @@ export function setAssessments(assessments){
     assessments,
   });
 }
+export function doNothing(){
+  dispatcher.dispatch({
+    type:"NOTHING"
+  })
+}
