@@ -27,7 +27,7 @@ export function setDownpayment(downpayment){
 }
 export function setHomeownersInsurance(homeownersInsurance){
   dispatcher.dispatch({
-    type: "HOMEOWNER_INSURANCE",
+    type: "HOMEOWNERS_INSURANCE",
     homeownersInsurance,
   });
 }

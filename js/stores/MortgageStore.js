@@ -9,7 +9,7 @@ class MortgageStore extends EventEmitter {
       interestRate: "3.25",
       taxes: "4500.00", 
       downpayment: "10000.00",
-      homeownerInsurance: "37.50",
+      homeownersInsurance: "37.50",
       assessments: "200.00"
     };
   }
@@ -28,8 +28,8 @@ class MortgageStore extends EventEmitter {
   setDownpayment(downpayment){
     this.mortgage.downpayment=downpayment;
   }
-  setHomeownerInsurance(homeownerInsurance){
-    this.mortgage.homeownerInsurance=homeownerInsurance;
+  setHomeownersInsurance(homeownersInsurance){
+    this.mortgage.homeownersInsurance=homeownersInsurance;
   }
   setAssessments(assessments){
     this.mortgage.assessments=assessments;
@@ -56,8 +56,8 @@ class MortgageStore extends EventEmitter {
         this.emit("change");
         break;
       }
-      case "HOMEOWNER_INSURANCE":{
-        this.setHomeownerInsurance(action.homeownerInsurance);
+      case "HOMEOWNERS_INSURANCE":{
+        this.setHomeownersInsurance(action.homeownersInsurance);
         this.emit("change");
         break;
       }

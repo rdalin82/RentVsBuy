@@ -59,7 +59,7 @@ export default class Container extends React.Component {
     const assess = parseFloat(this.state.mortgage.assessments);
     const pmi = parseFloat(this.state.mortgage.purchasePrice*0.01/12);
     const mt = parseFloat(this.state.mortgage.taxes/12);
-    const hi = parseFloat(this.state.mortgage.homeownerInsurance);
+    const hi = parseFloat(this.state.mortgage.homeownersInsurance);
     return parseFloat(mt+hi+pmi+assess);
   }
   calculateRentPayment(){
@@ -131,7 +131,7 @@ export default class Container extends React.Component {
         valueleft={this.state.rental.rentInsurance}
         leftChangeHandler={RentActions.setRentInsurance.bind(this)}
         labelright="Estimated Homeowner's Insurance" 
-        valueright={this.state.mortgage.homeownerInsurance}
+        valueright={this.state.mortgage.homeownersInsurance}
         rightChangeHandler={MortgageActions.setHomeownersInsurance.bind(this)}
         dollarsignright="$" />
 
