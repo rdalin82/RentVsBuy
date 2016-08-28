@@ -72,9 +72,19 @@ export default class Container extends React.Component {
     const fin = this.calculateFinalHomePayment();
     return parseFloat(total+fin).toFixed(2);
   }
+  rentOrBuy(){
+    if (this.finalCalc() > this.calculateRentPayment()){
+      return "Rent"
+    } else if (this.calculateRentPayment() > this.finalCalc()){
+      return "Buy"
+    } else {
+      return "?";
+    }
+  }
   render(){
     return (
      <div style={containerStyle}>
+      <TopHeader title={this.rentOrBuy()} />
       <TopHeader title="Mortgage Details"/>
 
       <InnerDiv 
