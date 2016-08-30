@@ -88,36 +88,38 @@ export default class Container extends React.Component {
       <TopHeader title="Mortgage Details"/>
 
       <InnerDiv 
-        labelleft="Purchase Price" dollarsignleft="$" 
         leftChangeHandler={MortgageActions.setPurchasePrice.bind(this)} 
+        labelleft="Purchase Price" 
+        dollarsignleft="$" 
         valueleft={this.state.mortgage.purchasePrice} 
-        labelright="APR Interest Rate"
         rightChangeHandler={MortgageActions.setInterestRate.bind(this)}
+        labelright="APR Interest Rate" 
         valueright={this.state.mortgage.interestRate} />
 
       <BlankRightDiv 
         leftChangeHandler={MortgageActions.setDownpayment.bind(this)}
-        valueleft={this.state.mortgage.downpayment}
         labelleft="Down Payment" 
-        dollarsignleft="$"/>
+        dollarsignleft="$"
+        valueleft={this.state.mortgage.downpayment}/>
 
       <InnerDiv 
         rightChangeHandler={MortgageActions.setTaxes.bind(this)}
-        labelleft="Estimated Monthly PMI"
         labelright="Taxes" 
+        dollarsignright="$"
         valueright={this.state.mortgage.taxes}
-        dollarsignleft="$" 
-        dollarsignright="$"/>
+        labelleft="Estimated Monthly PMI"
+        dollarsignleft="$"/>
 
       <BlankLeftDiv 
-        labelright="Total Monthly Payment(Interest and Principal)" 
         rightChangeHandler={MortgageActions.doNothing.bind(this)}
+        labelright="Total Monthly Payment(Interest and Principal)" 
         dollarsignright="$" 
         valueright={parseFloat(this.calculateTotalPayment()).toFixed(2)} />
 
       <TopHeader title="Rent vs Buy" />
 
-      <HalfDiv label="Your Monthly Rent Expenses" /><HalfDiv label="Estimated Mortgage Expenses" />
+      <HalfDiv label="Your Monthly Rent Expenses" />
+      <HalfDiv label="Estimated Mortgage Expenses" />
      
       <InnerDiv 
         labelleft="Monthly Rent Payment" 
