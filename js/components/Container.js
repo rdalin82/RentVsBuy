@@ -102,14 +102,11 @@ export default class Container extends React.Component {
         dollarsignleft="$"
         valueleft={this.state.mortgage.downpayment}/>
 
-      <InnerDiv 
+      <BlankLeftDiv
         rightChangeHandler={MortgageActions.setTaxes.bind(this)}
         labelright="Taxes" 
         dollarsignright="$"
-        valueright={this.state.mortgage.taxes}
-        labelleft="Estimated Monthly PMI"
-        dollarsignleft="$"/>
-
+        valueright={this.state.mortgage.taxes} />
       <BlankLeftDiv 
         rightChangeHandler={MortgageActions.doNothing.bind(this)}
         labelright="Total Monthly Payment(Interest and Principal)" 
